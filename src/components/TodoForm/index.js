@@ -11,7 +11,7 @@ function TodoForm({ createTask })  {
         event.preventDefault();
         if(!value.trim())  {
             setValue("");
-            return ;
+            return;
         };
 
         dispatch(createTask(value))

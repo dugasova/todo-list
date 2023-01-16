@@ -11,7 +11,7 @@ const todoSlice = createSlice({
         createTask: (state, action) => {
             const newTask = {
                 text: action.payload,
-                isTaskcompleted: false
+                isTaskCompleted: false
             };
             state.tasks.push(newTask)
         },
@@ -19,7 +19,7 @@ const todoSlice = createSlice({
             state.tasks.splice(action.payload, 1)
         },
         setTaskCompleted: (state, action) => {
-            state.tasks[action.payload].isTaskcompleted = !state.tasks[action.payload].isTaskcompleted
+            state.tasks[action.payload].isTaskCompleted = !state.tasks[action.payload].isTaskCompleted
         }
 
     }

@@ -11,15 +11,15 @@ import { useDispatch } from "react-redux";
 
 function TodoTask({index, todo, setTaskCompleted, deleteTask}) {
     const dispatch = useDispatch()
-
+    
     return (
         <List dense>
-            <ListItem key={index} style={{ textDecoration : todo.isTaskcompleted ? 'line-through' : 'none' }} disablePadding secondaryAction= {
+            <ListItem key={index} style={{ textDecoration : todo.isTaskCompleted ? 'line-through' : 'none' }} disablePadding secondaryAction= {
                 <IconButton edge="end"  onClick={ () => dispatch(deleteTask(index))}><DeleteIcon /></IconButton>
             }>
             <ListItemButton  edge="start" onClick={() => dispatch(setTaskCompleted(index))}>
                 <ListItemIcon>
-                    <Checkbox  edge="start" checked={todo.isTaskCompleted}/>
+                    <Checkbox  edge="start" checked={todo.isTaskCompleted} />
                 </ListItemIcon>
                 <ListItemText id={index} primary={todo.text} />
             </ListItemButton>
