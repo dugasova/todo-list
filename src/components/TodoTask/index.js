@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { List } from '@mui/material';
 import ListItem from '@mui/material/ListItem';
 import Checkbox from '@mui/material/Checkbox';
@@ -7,23 +7,21 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { IconButton } from '@mui/material';
+import { useDispatch } from "react-redux";
 
-function TodoTask({index, todo, value, completeTask, deleteTask}) {
-    const [isTaskCompleted, setTaskCompleted] = useState(false)
-    completeTask = (event) => {
-        setTaskCompleted(!isTaskCompleted)
-    }
+function TodoTask({index, todo, setTaskCompleted, deleteTask}) {
+    const dispatch = useDispatch()
 
     return (
         <List dense>
-            <ListItem key={index} style={{ textDecoration : isTaskCompleted ? 'line-through' : 'none' }} disablePadding secondaryAction= {
-                <IconButton edge="end"  onClick={() => deleteTask(index)}><DeleteIcon /></IconButton>
+            <ListItem key={index} style={{ textDecoration : todo.isTaskcompleted ? 'line-through' : 'none' }} disablePadding secondaryAction= {
+                <IconButton edge="end"  onClick={ () => dispatch(deleteTask(index))}><DeleteIcon /></IconButton>
             }>
-            <ListItemButton  edge="start" onClick={() => completeTask(index)}>
+            <ListItemButton  edge="start" onClick={() => dispatch(setTaskCompleted(index))}>
                 <ListItemIcon>
-                    <Checkbox  edge="start" checked={+isTaskCompleted}/>
+                    <Checkbox  edge="start" checked={todo.isTaskCompleted}/>
                 </ListItemIcon>
-                <ListItemText id={index} primary={todo.task} />
+                <ListItemText id={index} primary={todo.text} />
             </ListItemButton>
             </ListItem>
         </List>

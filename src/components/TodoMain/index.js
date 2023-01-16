@@ -1,27 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import TodoForm from "../TodoForm";
 import TodoTaskContainer from "../TodoTaskContainer";
 import { Container } from '@mui/material';
+import { useSelector } from "react-redux";
+import { createTask, deleteTask, setTaskCompleted } from "../../features/toDoSlice";
 
 function TodoMain(props) {
-    const [todos, setTodos] = useState([]);
+    const tasks = useSelector((state) => state.reducer.tasks)
 
-    function createTask (task) {
-        const newTask = [ ...todos, { task }];
-        setTodos(newTask);
-        console.log(newTask);
-    }
-
-    function deleteTask(index) {
-        const newTask = [...todos];
-        newTask.splice(index, 1)
-        setTodos(newTask);
-    }
-
-    return <Container>
-        <TodoForm props={props} todos={[...todos]} createTask={createTask} deleteTask={deleteTask} />
-        <TodoTaskContainer props={props} todos={[...todos]} deleteTask={deleteTask} />
-    </Container>
+    return (
+        <Container>
+            <TodoForm props={props} createTask={createTask} />
+            <TodoTaskContainer props={props} todos={[...tasks]} setTaskCompleted={setTaskCompleted} deleteTask={deleteTask} />
+        </Container>
+    )
 }
 
 export default TodoMain;

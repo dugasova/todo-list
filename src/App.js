@@ -1,10 +1,10 @@
 import './App.css';
 import TodoMain from "./components/TodoMain"
 
-function App() {
+const App = () => {
   return (
       <div className="App">
-        <h2> To do list</h2>
+        <h2>To do list</h2>
           <TodoMain />
        </div>
   );
