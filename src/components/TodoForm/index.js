@@ -7,7 +7,9 @@ function TodoForm({ createTask})  {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if(!value.trim())  { return };
+        if(!value.trim())  { 
+            return 
+        };
         createTask(value);
         setValue("");
     };

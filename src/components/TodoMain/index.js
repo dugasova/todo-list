@@ -9,7 +9,6 @@ function TodoMain(props) {
     function createTask (task) {
         const newTask = [ ...todos, { task }];
         setTodos(newTask);
-        console.log(newTask);
     }
 
     function deleteTask(index) {
@@ -18,10 +17,12 @@ function TodoMain(props) {
         setTodos(newTask);
     }
 
-    return <Container>
-        <TodoForm props={props} todos={[...todos]} createTask={createTask} deleteTask={deleteTask} />
-        <TodoTaskContainer props={props} todos={[...todos]} deleteTask={deleteTask} />
-    </Container>
+    return (
+        <Container>
+            <TodoForm props={props} todos={[...todos]} createTask={createTask} deleteTask={deleteTask} />
+            <TodoTaskContainer props={props} todos={[...todos]} deleteTask={deleteTask} />
+        </Container>
+    )
 }
 
 export default TodoMain;

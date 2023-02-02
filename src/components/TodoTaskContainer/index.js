@@ -5,10 +5,8 @@ function TodoTaskContainer({todos, deleteTask}) {
     return(
         <div>
             {todos.map( (todo, index) => {
-                return <TodoTask key={index}
-                index={index}
-                todo={todo}
-                deleteTask={deleteTask} />
+                return <TodoTask key={index} index={index} todo={todo} deleteTask={deleteTask}
+            />
             })}
         </div>
     )

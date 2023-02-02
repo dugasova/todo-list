@@ -10,6 +10,7 @@ import { IconButton } from '@mui/material';
 
 function TodoTask({index, todo, value, completeTask, deleteTask}) {
     const [isTaskCompleted, setTaskCompleted] = useState(false)
+    
     completeTask = (event) => {
         setTaskCompleted(!isTaskCompleted)
     }
